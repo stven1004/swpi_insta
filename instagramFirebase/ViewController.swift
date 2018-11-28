@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
     
@@ -22,8 +23,25 @@ class ViewController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        
         return tf
     }()
+    
+    @objc func handleTextInputChange() {
+        //let isEmailValid = emailTextField.text?.count ?? 0 > 0
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 && usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        
+        if isFormValid {
+            signUpButton.isEnabled = true
+            signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+        } else {
+            signUpButton.isEnabled = false
+            signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+        }
+    }
+    
 
     let usernameTextField: UITextField = {
         let tf = UITextField()
@@ -31,6 +49,7 @@ class ViewController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
@@ -42,6 +61,7 @@ class ViewController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
@@ -53,8 +73,42 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
+        
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        
+        button.isEnabled = false
+        
         return button
     }()
+    
+    @objc func handleSignUp() {
+        guard let email = emailTextField.text, email.count > 0 else { return }
+        guard let username = usernameTextField.text, username.count > 0 else { return }
+        guard let password = passwordTextField.text, password.count > 0 else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error: Error?) in
+            if let err = error {
+                print("failed to create user:",err)
+                return
+            }
+            print("Successfully created user:", user?.user.uid ?? "")
+            
+            guard let uid = user?.user.uid else { return }
+            
+            let usernameValues = ["username": username]
+            let values = [uid: usernameValues]//[uid: 1]
+            Database.database().reference().child("users").setValue(values, withCompletionBlock: { (err, ref) in
+                
+                if let err = err {
+                    print("Failed to save user info into db:", err)
+                    return
+                }
+                
+                print("Successfully saved user info to db")
+                
+            })
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +128,7 @@ class ViewController: UIViewController {
         
         let stackView = UIStackView(arrangedSubviews: [emailTextField,usernameTextField,passwordTextField,signUpButton])
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+       // stackView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
@@ -104,7 +158,7 @@ extension UIView {
         }
         
         if let right = right {
-            rightAnchor.constraint(equalTo: right, constant: paddingRight).isActive = true
+            rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
         }
         
         if width != 0 {
