@@ -14,6 +14,9 @@
 		61390BDD21ACC244008B84D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61390BDC21ACC244008B84D0 /* Assets.xcassets */; };
 		61390BE021ACC244008B84D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61390BDE21ACC244008B84D0 /* LaunchScreen.storyboard */; };
 		61390BE921AD1592008B84D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61390BE821AD1592008B84D0 /* Extensions.swift */; };
+		617E04B221B124D00020E8FA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E04B121B124D00020E8FA /* MainTabBarController.swift */; };
+		617E04B421B148FF0020E8FA /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E04B321B148FF0020E8FA /* UserProfileController.swift */; };
+		617E04B621B157C40020E8FA /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E04B521B157C40020E8FA /* TestViewController.swift */; };
 		A388F6AF7B21CC960C6F0A31 /* Pods_instagramFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EECC9903420B3133469CA5F8 /* Pods_instagramFirebase.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		61390BDF21ACC244008B84D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61390BE121ACC244008B84D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61390BE821AD1592008B84D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		617E04B121B124D00020E8FA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		617E04B321B148FF0020E8FA /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		617E04B521B157C40020E8FA /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9B2C417FCA3975C64AF4141F /* Pods-instagramFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagramFirebase/Pods-instagramFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		EA5AD92D53B43F0021BB77F7 /* Pods-instagramFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagramFirebase/Pods-instagramFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		EECC9903420B3133469CA5F8 /* Pods_instagramFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagramFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +81,9 @@
 			children = (
 				61390BE721AD1551008B84D0 /* Utils */,
 				61390BD521ACC242008B84D0 /* AppDelegate.swift */,
+				617E04B521B157C40020E8FA /* TestViewController.swift */,
+				617E04B121B124D00020E8FA /* MainTabBarController.swift */,
+				617E04B321B148FF0020E8FA /* UserProfileController.swift */,
 				61390BD721ACC242008B84D0 /* ViewController.swift */,
 				61390BD921ACC242008B84D0 /* Main.storyboard */,
 				61390BDC21ACC244008B84D0 /* Assets.xcassets */,
@@ -221,6 +230,9 @@
 			files = (
 				61390BD821ACC242008B84D0 /* ViewController.swift in Sources */,
 				61390BE921AD1592008B84D0 /* Extensions.swift in Sources */,
+				617E04B221B124D00020E8FA /* MainTabBarController.swift in Sources */,
+				617E04B421B148FF0020E8FA /* UserProfileController.swift in Sources */,
+				617E04B621B157C40020E8FA /* TestViewController.swift in Sources */,
 				61390BD621ACC242008B84D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
