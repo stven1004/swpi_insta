@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6114C57721B2B5C300E49615 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6114C57621B2B5C300E49615 /* UserProfileHeader.swift */; };
 		61157A0D21AE3FF300BEC346 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61157A0C21AE3FF300BEC346 /* GoogleService-Info.plist */; };
 		61390BD621ACC242008B84D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61390BD521ACC242008B84D0 /* AppDelegate.swift */; };
 		61390BD821ACC242008B84D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61390BD721ACC242008B84D0 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6114C57621B2B5C300E49615 /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		61157A0C21AE3FF300BEC346 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61390BD221ACC242008B84D0 /* instagramFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagramFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61390BD521ACC242008B84D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6114C57521B2B59700E49615 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				617E04B321B148FF0020E8FA /* UserProfileController.swift */,
+				6114C57621B2B5C300E49615 /* UserProfileHeader.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
 		61390BC921ACC242008B84D0 = {
 			isa = PBXGroup;
 			children = (
@@ -79,11 +90,11 @@
 		61390BD421ACC242008B84D0 /* instagramFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				6114C57521B2B59700E49615 /* UserProfile */,
 				61390BE721AD1551008B84D0 /* Utils */,
 				61390BD521ACC242008B84D0 /* AppDelegate.swift */,
 				617E04B521B157C40020E8FA /* TestViewController.swift */,
 				617E04B121B124D00020E8FA /* MainTabBarController.swift */,
-				617E04B321B148FF0020E8FA /* UserProfileController.swift */,
 				61390BD721ACC242008B84D0 /* ViewController.swift */,
 				61390BD921ACC242008B84D0 /* Main.storyboard */,
 				61390BDC21ACC244008B84D0 /* Assets.xcassets */,
@@ -229,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61390BD821ACC242008B84D0 /* ViewController.swift in Sources */,
+				6114C57721B2B5C300E49615 /* UserProfileHeader.swift in Sources */,
 				61390BE921AD1592008B84D0 /* Extensions.swift in Sources */,
 				617E04B221B124D00020E8FA /* MainTabBarController.swift in Sources */,
 				617E04B421B148FF0020E8FA /* UserProfileController.swift in Sources */,
