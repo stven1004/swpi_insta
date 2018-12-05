@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let plusPhotoButton: UIButton = {
         let button = UIButton()
@@ -21,6 +21,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @objc func handlePlusPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
         
         present(imagePickerController, animated: true, completion: nil)
     }
@@ -147,10 +148,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
     }
 
+    let alreadyHaveAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        attributedTitle.append(NSAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237)
+            ]))
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        button.addTarget(self, action: #selector(handleAlreadyHaveAccount), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func handleAlreadyHaveAccount() {
+        _ = navigationController?.popViewController(animated: true)
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(alreadyHaveAccountButton)
+        alreadyHaveAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        
+        view.backgroundColor = .white
         
         view.addSubview(plusPhotoButton)
         
@@ -160,15 +183,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         setupInputFields()
 
-        
     }
 
     fileprivate func setupInputFields() {
         
         let stackView = UIStackView(arrangedSubviews: [emailTextField,usernameTextField,passwordTextField,signUpButton])
-        
-       // stackView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
         stackView.spacing = 10
