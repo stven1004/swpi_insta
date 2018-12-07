@@ -18,6 +18,7 @@ class LoginController: UIViewController {
         logoImageView.contentMode = .scaleAspectFill
         
         view.addSubview(logoImageView)
+        
         logoImageView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 50)
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -48,7 +49,9 @@ class LoginController: UIViewController {
     }()
 
     @objc func handleTextInputChange() {
-        let isFormValid = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        
+//        let isFormValid = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        let isFormValid = emailTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false
         
         if isFormValid {
             loginButton.isEnabled = true
@@ -79,7 +82,7 @@ class LoginController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        Auth.auth().signIn(withEmail: email, password: password) { (user, err) in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, err) in
             
             if let err = err {
                 print("Failed to sign in with email:", err)
@@ -93,7 +96,7 @@ class LoginController: UIViewController {
             mainTabBarController.setupViewControllers()
             
             self.dismiss(animated: true, completion: nil)
-        }
+        })
     }
     
     let dontHaveAccountButton: UIButton = {
@@ -109,8 +112,6 @@ class LoginController: UIViewController {
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
-    
-    
     
     @objc func handleShowSignUp() {
         let signUpController = SignUpController()

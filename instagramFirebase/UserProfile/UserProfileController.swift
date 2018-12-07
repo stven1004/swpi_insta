@@ -24,7 +24,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
         setupLogOutButton()
     }
@@ -34,9 +34,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     @objc func handleLogOut() {
-        let alertController = UIAlertController(title: "Log out", message: "Are you sure?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        alertController.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
             
             do{
                 try Auth.auth().signOut()

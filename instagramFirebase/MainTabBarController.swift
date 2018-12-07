@@ -25,7 +25,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             return false
         }
         
-        return false
+        return true
     }
     
     override func viewDidLoad() {
