@@ -10,7 +10,8 @@ import UIKit
 import Firebase
 
 class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+  
+    // MARK:- Property
     let plusPhotoButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "plus_photo").withRenderingMode(.alwaysOriginal), for: .normal)
